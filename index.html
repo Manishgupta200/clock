@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>javascript clock animation. Don't forgot HTML ,css</title>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<style>
+		body{
+			display: flex;
+			justify-content: center;
+			height: 90vh;
+			-ms-align-items: center;
+			align-items: center;
+			background-color: #493665;
+		}
+		div#test{
+			position: relative;
+			background: #A693C1;
+			width: 200px;
+			height: 200px;
+			border: 2px solid #fff;
+			border-radius: 100%;
+			display: flex;
+			justify-content: center;
+			-ms-align-items: center;
+			align-items: center;
+			box-shadow: 0 0 30px 10px rgba(0,0,0,1);
+			background: linear-gradient(to bottom right,#64D6EF,red 3%, #3D58E0);
+			transform: rotate(-90deg);
+		}
+		div#test #point, div#test #min, div#test #hour{
+			position: fixed;
+			width: 10px;
+			height: 10px;
+			background: #fff;
+			border-radius: 100%;
+			display: flex;
+			-ms-align-items: center;
+			align-items: center;
+		}
+		#point:after{
+			content: "";
+			width: 100px;
+			border: 2px solid #fff;
+			background: #fff;
+			border-radius: 100%;
+			opacity: 1;
+			position: absolute;
+		}
+	
+		#min:after{
+			content: "";
+			width: 88px;
+			border: 2px solid #fff;
+			background: #fff;
+			border-radius: 100%;
+			opacity: 1;
+			position: absolute;
+		}
+		
+		#hour:after{
+			content: "";
+			width: 70px;
+			border: 2px solid #fff;
+			background: #fff;
+			border-radius: 100%;
+			opacity: 1;
+			position: absolute;
+		}
+		h1{
+			position: absolute;
+			top: 10%;
+			text-transform: uppercase;
+			font-size: 50px;
+			font-family: serif;
+			color: #E1CDCD;
+			text-shadow: 5px 10px  3px #000;
+		}
+		div#test span.a{
+			position: absolute;
+			top: 0;
+			border: 2px solid lime;
+			height: 5%;
+			margin-top: 10px;
+		}
+		div#test span.b{
+			position: absolute;
+			right: 0;
+			border: 2px solid #eee;
+			width: 5%;
+			margin-right: 10px;
+		}
+		div#test span.c{
+			position: absolute;
+			bottom: 0;
+			border: 2px solid lime;
+			height: 5%;
+			margin-bottom: 10px;
+		}
+		div#test span.d{
+			position: absolute;
+			left: 0;
+			border: 2px solid lime;
+			width: 5%;
+			margin-left: 10px;
+		}
+		h3#din{
+			position: absolute;
+			top: 65%;
+			text-transform: uppercase;
+			font-size: 30px;
+			font-family: serif;
+			color: #E1CDCD;
+			text-shadow: 1px 1px  3px #000;
+		}
+	</style>
+</head>
+<body>
+	<h1>mine time</h1>
+	<div id="test">
+		<span class="a"></span>
+		<span class="b"></span>
+		<span class="c"></span>
+		<span class="d"></span>
+		<div id="point"></div>
+		<div id="min"></div>
+		<div id="hour"></div>
+	</div>
+	<!-- <h3 id="din"><i class="far fa-clock" style="font-size:120px;color:#2196F3"></i></h3> -->
+	<h3 id="din"><i class="fas fa-cog fa-spin"></i></i></h3>
+	<script>
+
+		var now=new Date();
+		   var newSecond=now.getSeconds();
+		   var newMinute=now.getMinutes();
+		   var newHour=now.getHours();
+		   
+		   console.log("Second: " + newSecond);
+		   console.log("Minute: " + newMinute);
+		   console.log("Hour: " + newHour);
+
+		var a=newSecond*6;
+		setInterval(Anime,1000);
+		function Anime(){
+			a+=6;
+			var target=document.getElementById("point");
+			target.style.transform="rotate("+a+"deg)";
+		}
+
+		var b=newMinute*6;
+		setInterval(Rotation,1000);
+		function Rotation(){
+			b+=(1/10);
+			var target=document.getElementById("min");
+			target.style.transform="rotate("+b+"deg)";
+		}
+
+		var c=newHour*30;
+		setInterval(Hrs,1000);
+		function Hrs(){
+			c+=(1/120);
+				var target=document.getElementById("hour");
+			target.style.transform="rotate("+c+"deg)";
+		}
+	</script>
+</body>
+</html>
